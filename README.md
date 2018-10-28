@@ -11,4 +11,16 @@ Local in-memory block chain
 
 Metamask extension for Google Chrome
 
+### Highlight
 
+#### Tutorial 4:
+- creating smart contract with solidity
+- deploying smart contract
+- using truffle console to test the smart contract
+- writing test in javascript and truffle.js
+- smart contract interact with a html page using web3 api.
+
+
+### Dev notes
+
+- whenever you restart Ganache and you need to redeploy your smart contract, first delete the json file in build/contracts/ folder.

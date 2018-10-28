@@ -28,6 +28,18 @@ App = {
     return App.render();
   },
 
+  listenForEvents: function () {
+    App.contracts.Election.deployed().then(function (instance) {
+      instance.votedEvent({}, {
+        fromBlock: 0,
+        toBlock: 'latest'
+      }).watch(function (error, event) {
+        console.log("event triggered, event");
+        App.render();
+      });
+    });
+  },
+
   render: function () {
     var electionInstance;
     var loader = $("#loader");

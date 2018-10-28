@@ -11,6 +11,24 @@ Local in-memory block chain
 
 Metamask extension for Google Chrome
 
+### Development
+
+ Checkout the code and run
+ > npm install
+
+Deploy smart contract
+> truffle migrate
+
+Redeploy changes of smart contract (try minimise in PROD $$$)
+> truffle migrate --reset
+
+Run test
+> truffle test
+
+Run web app
+> npm run dev
+
+
 ### Highlight
 
 #### Tutorial 4:
@@ -24,6 +42,11 @@ Metamask extension for Google Chrome
 - cast a vote
 - gas basic
 
+#### Tutorial 6:
+- events in smart contract
+
+
 ### Dev notes
 
 - whenever you restart Ganache and you need to redeploy your smart contract, first delete the json file in build/contracts/ folder.
+- somehow MetaMask had problem listening to events. 

@@ -20,6 +20,9 @@ Metamask extension for Google Chrome
 - writing test in javascript and truffle.js
 - smart contract interact with a html page using web3 api.
 
+#### Tutorial 5:
+- cast a vote
+- gas basic
 
 ### Dev notes
 

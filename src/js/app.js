@@ -52,14 +52,26 @@ App = {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
 
+      var candidatesSelect = $("#candidateSelect");
+      candidatesSelect.empty();
+
       for (var i = 1; i <= candidatesCount; i++) {
         electionInstance.candidates(i).then(function (candidate) {
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];
 
-          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>";
+          var candidateTemplate = `<tr><th>${id}</th><td>${name}</td><td>${voteCount}</td></tr>`;
           candidatesResults.append(candidateTemplate);
+
+          var candidateOption = `<option value="${id}">${name}</option>`;
+          candidatesSelect.append(candidateOption);
+
+          return electionInstance.voters(App.account);
+        }).then(function (hasVoted) {
+          if (hasVoted) {
+            $('form').hide();
+          }
         });
       }
 
@@ -69,7 +81,21 @@ App = {
       console.warn(error);
     });
 
+
   },
+  castVote: function () {
+    var candidateId = $("#candidateSelect").val();
+    App.contracts.Election.deployed().then(function (instance) {
+      return instance.vote(candidateId, {
+        from: App.account
+      });
+    }).then(function (result) {
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
 
 };
 
